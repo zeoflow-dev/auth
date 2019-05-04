@@ -21,11 +21,7 @@ function checkScreenSize() {
 	  	if (desktop) {
 	  		action = "../h/d/build";
 	  	} else {
-	  		if (localStorage.getItem("ZeoFlowUserLogged")!==null) {
-	  			action = "../h/m/home";
-			} else {
-	  			action = "../h/m/login";
-			}
+	  		action = "https://zeoflow.github.io/m";
 	  	}
 	  	checkLoggedIn();
 	  },

@@ -1,4 +1,5 @@
 var mFirestore = firebase.firestore();
+var desktop;
 
 checkScreenSize();
 
@@ -23,18 +24,23 @@ mFirestore.collection("emailManager").doc(uid)
 
 						setTimeout(
 						  () => {
-						  	
-								window.open("../m/login?emailVerified=" + emailManager.email, "_top");
+						  		if (!desktop) {
+									window.open("https://zeoflow.github.io/m/login?emailVerified=" + emailManager.email, "_top");
+						  		}
 
 						  },
 						  3 * 1000
 						);
 
 				  	} else if (emailManager.verifyCode !== verifyCode) {
-				  		window.open("../m/login?emailVerified=" + emailManager.email, "_top");
+				  		if (!desktop) {
+				  			window.open("https://zeoflow.github.io/m/login?emailVerified=" + emailManager.email, "_top");
+				  		}
 		  			}
 			    } else {
-				  	window.open("../m/login", "_top");
+			    	if (!desktop) {
+			    		window.open("https://zeoflow.github.io/m/login", "_top");
+			    	}
 			    }
 			}).catch(function(error) {
 			    console.log("Error getting document:", error);
@@ -48,15 +54,10 @@ function onResize() {
 
 function checkScreenSize() {
 
-	var desktop;
 	if (window.screen.width <= 600) {
 		desktop = false;
 	} else {
 		desktop = true;
-	}
-
-	if (desktop) {
-		//window.open("../d/build", "_top");
 	}
 
 }
